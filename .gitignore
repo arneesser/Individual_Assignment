@@ -1,2 +1,6 @@
 
 *.pdf
+
+.Rproj.user/shared/notebooks/patch-chunk-names
+
+.Rproj.user/49943ED/sources/s-98EA9CDC/lock_file
