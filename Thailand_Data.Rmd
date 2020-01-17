@@ -1,0 +1,35 @@
+---
+title: "Thailand Conflict Data"
+output: html_notebook
+---
+```{r}
+# Load Data
+library(tidyverse)
+data <- read_csv('Thailand_data.csv')
+```
+```{r}
+# Calculating the total number of fatalities by year
+data_fixed <- data %>%
+group_by(Year) %>%
+  summarise(
+    sum_best = sum(Best),
+    sum_high = sum(High),
+    sum_low = sum(Low)
+  )
+    
+```
+```{r}
+ggplot(data = data_fixed) +
+  geom_col(mapping = aes(x = Year , y = sum_best, fill = sum_best )) +
+  xlab("Year") +
+  labs(fill = 'Deaths')+
+  ylab("Number of Deaths")+
+  scale_x_continuous(breaks=seq(2004,2015,2))+
+  scale_y_continuous(breaks=seq(0,550,100))+
+  ggtitle("Number of Fatalities in Thailand from 2004-2015")+
+ggsave('Thailand_data.jpg')
+```
+
+
+
+
