@@ -9,11 +9,11 @@ first_dict = dict((x, entry_one[x]) for x in ['country', 'year', 'best'] if x in
 # For Loop that creates a list of dictionaries with specified keys
 good_data = []
 for entry in data:
-    dictionary = dict((x, entry[x]) for x in ['country', 'year', 'best'] if x in entry)
+    dictionary = dict((x, entry[x]) for x in ['country', 'year', 'best', 'high', 'low'] if x in entry)
     good_data.append(dictionary)
 
 # Transferring contents to .csv file 
 with open('Thailand_data.csv', 'w') as file:
-    file.write('Country, Year, Best \n')
+    file.write('Country, Year, Best, High, Low \n')
     for line in good_data:
-        file.write(f'{line["country"]},{line["year"]},{line["best"]}\n')
+        file.write(f'{line["country"]},{line["year"]},{line["best"]},{line["high"]},{line["low"]}\n')
